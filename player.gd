@@ -37,8 +37,8 @@ func _process(delta: float) -> void:
 func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.disabled = false
+	$CollisionShape2D.set_deferred("disabled", false)
 	
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	hit.emit()
-	$CollisionShape2D.set_defered("disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
