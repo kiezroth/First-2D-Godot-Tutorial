@@ -27,12 +27,13 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
+	if velocity != Vector2.ZERO:
+		rotation = 0
+		rotation = velocity.angle() + PI / 2
+		if velocity.y != 0:
+			$AnimatedSprite2D.animation = "up"
+		else:
+			$AnimatedSprite2D.animation = "walk" 
 
 func start(pos):
 	position = pos
