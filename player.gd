@@ -34,10 +34,10 @@ func _process(delta: float) -> void:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
 
-func respawn(pos):
+func start(pos):
 	position = pos
 	show()
-	$CollisionShape2D.set_defered("disabled", false)
+	$CollisionShape2D.disabled = false
 	
 func _on_body_entered(body: Node2D) -> void:
 	hit.emit()
